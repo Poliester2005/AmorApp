@@ -17,12 +17,9 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Color(0xFFFFFFFF), // Branco
         colorScheme: ColorScheme.fromSwatch()
             .copyWith(secondary: Color(0xFFF8BBD0)), // Rosa Claro
-        textTheme: Theme
-            .of(context)
-            .textTheme
-            .apply(
-          bodyColor: Color(0xFF757575), // Cor do texto padrão
-        ),
+        textTheme: Theme.of(context).textTheme.apply(
+              bodyColor: Color(0xFF757575), // Cor do texto padrão
+            ),
       ),
       home: CountdownPage(),
     );
@@ -78,64 +75,54 @@ class _CountdownPageState extends State<CountdownPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme
-            .of(context)
-            .colorScheme
-            .secondary,
+        backgroundColor: Theme.of(context).colorScheme.secondary,
         centerTitle: true,
         title: const Text(
           'Tempo para nosso aniversario',
           style: TextStyle(fontSize: 35, fontFamily: 'Parisienne'),
         ),
       ),
-      body: Center(
-        child: Container(
-          color: Theme
-              .of(context)
-              .colorScheme
-              .secondary, // Fundo rosa claro
-          width: double.infinity,
-          height: double.infinity,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      body: Container(
+          color: Theme.of(context).colorScheme.secondary,
+          child: ListView(
+            padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
             children: [
               Stack(
                 alignment: Alignment.center,
                 children: [
                   const Icon(
                     FontAwesomeIcons.heart,
-                    size: 400,
+                    size: 250,
                     color: Color(0xFFD32F2F), // Vermelho Escuro
                   ),
                   remainingTime.isNegative
                       ? const Text(
-                    'Data alvo atingida!',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 24,
-                      color: Colors.white,
-                    ),
-                  )
+                          'Data alvo atingida!',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 24,
+                            color: Colors.white,
+                          ),
+                        )
                       : SizedBox(
-                    width: 250, // Defina a largura desejada
-                    child: Text(
-                      formatDuration(remainingTime),
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                          fontSize: 24,
-                          color: Color(0xFF424242),
-                          fontFamily: 'Parisienne'),
-                      maxLines: 2,
-                      overflow: TextOverflow
-                          .ellipsis, // Ajuste o comportamento do texto se exceder a largura
-                    ),
-                  ),
+                          width: 250, // Defina a largura desejada
+                          child: Text(
+                            formatDuration(remainingTime),
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                                fontSize: 20,
+                                color: Color(0xFF424242),
+                                fontFamily: 'Parisienne'),
+                            maxLines: 2,
+                            overflow: TextOverflow
+                                .ellipsis, // Ajuste o comportamento do texto se exceder a largura
+                          ),
+                        ),
                 ],
               ),
-              Container(
-                  child: Image.asset('assets/gif_amor.gif'),
-                  // Inclua o caminho do seu arquivo GIF aqu
-              ),
+              SizedBox(height: 20),
+              Image.asset('assets/gif_amor.gif'),
+              SizedBox(height: 20),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Color(0xFFD32F2F),
@@ -157,9 +144,7 @@ class _CountdownPageState extends State<CountdownPage> {
                 ),
               ),
             ],
-          ),
-        ),
-      ),
+          )),
     );
   }
 }
