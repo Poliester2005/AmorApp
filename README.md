@@ -49,7 +49,7 @@ flutter run
       <a href="https://github.com/Poliester2005" title="eu">
         <img src="https://avatars.githubusercontent.com/u/107966984?v=4" width="100px;" alt="Foto do Eduardo Pielich no GitHub"/><br>
         <sub>
-          <b>Iuri Silva</b>
+          <b>Eduardo Pielich</b>
         </sub>
       </a>
     </td>
